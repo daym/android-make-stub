@@ -1,0 +1,15 @@
+
+LOCAL_OBJ_FILES := $(patsubst %.cpp,%.o,$(LOCAL_SRC_FILES))
+
+LOCAL_C_INCLUDES_PARAMS := -I $(GOOGLETEST_INCLUDE) -I ../base/include -I ../include -I ../libsparse/include $(foreach d, $(LOCAL_C_INCLUDES), -I $d)
+
+ZLOCAL_CFLAGS := $(LOCAL_CFLAGS)
+
+$(LOCAL_MODULE): $(LOCAL_OBJ_FILES) $(LOCAL_STATIC_LIBRARIES)
+	$(CXX) -o $@ $^ $(LOCAL_LDFLAGS) $(LOCAL_STATIC_LIBRARIES)
+
+%.o: %.cpp
+	$(CXX) -c $(ZLOCAL_CFLAGS) $(CPPFLAGS) $(LOCAL_C_INCLUDES_PARAMS) $<
+
+%.o: %.c
+	$(CC) -c $(ZLOCAL_CFLAGS) $(LOCAL_CONLYFLAGS) $(CPPFLAGS) $(LOCAL_C_INCLUDES_PARAMS) $<
