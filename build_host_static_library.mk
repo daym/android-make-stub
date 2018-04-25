@@ -16,7 +16,10 @@ install-$(LOCAL_MODULE).a: $(LOCAL_MODULE).a
 	install -m 755 $(LOCAL_MODULE).a $(prefix)/lib/$(LOCAL_MODULE).a
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $(LOCAL_CFLAGS) -I $(LOCAL_C_INCLUDES_PARAMS) $<
+	$(CC) -c $(CFLAGS) $(LOCAL_CFLAGS) $(LOCAL_C_INCLUDES_PARAMS) $<
 
 %.o: %.cc
-	$(CXX) -c $(CFLAGS) $(LOCAL_CFLAGS) -I $(LOCAL_C_INCLUDES_PARAMS) $<
+	$(CXX) -c $(CFLAGS) $(LOCAL_CFLAGS) $(LOCAL_C_INCLUDES_PARAMS) $<
+
+%.o: %.cpp
+	$(CXX) -c $(CFLAGS) $(LOCAL_CFLAGS) $(LOCAL_C_INCLUDES_PARAMS) $<
