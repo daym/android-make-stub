@@ -9,3 +9,4 @@ install: all
 	install -m 644 src/build_host_shared_library.mk $(prefix)/share/android-make-stub/build_host_shared_library.mk
 	install -m 644 src/build_host_static_library.mk $(prefix)/share/android-make-stub/build_host_static_library.mk
 	install -m 644 src/clear_vars.mk $(prefix)/share/android-make-stub/clear_vars.mk
+	install -m 644 src/Makefile $(prefix)/share/android-make-stub/Makefile
