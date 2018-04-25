@@ -1,4 +1,5 @@
 
+prefix = /usr
 HOST_OS = linux
 
 my-dir = .
