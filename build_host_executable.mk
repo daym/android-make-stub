@@ -1,7 +1,7 @@
 
-LOCAL_C_OBJ_FILES := $(filter %.o,$(patsubst %.c,%.o,$(LOCAL_SRC_FILES)))
-LOCAL_CXX_OBJ_FILES := $(filter %.o,$(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(LOCAL_SRC_FILES))))
-LOCAL_OBJ_FILES := $(patsubst %.cpp,%.o,$(patsubst %.c,%.o,$(patsubst %.cc,%.o,$(LOCAL_SRC_FILES))))
+LOCAL_C_OBJ_FILES := $(notdir $(filter %.o,$(patsubst %.c,%.o,$(LOCAL_SRC_FILES))))
+LOCAL_CXX_OBJ_FILES := $(notdir $(filter %.o,$(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(LOCAL_SRC_FILES)))))
+LOCAL_OBJ_FILES := $(notdir $(patsubst %.cpp,%.o,$(patsubst %.c,%.o,$(patsubst %.cc,%.o,$(LOCAL_SRC_FILES)))))
 
 $(LOCAL_C_OBJ_FILES):
 $(LOCAL_C_OBJ_FILES): LOCAL_CFLAGS := $(LOCAL_CFLAGS)
