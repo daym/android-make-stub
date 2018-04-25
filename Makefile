@@ -1,21 +1,11 @@
 
-prefix = /usr
-HOST_OS = linux
+.PHONY: all install
 
-my-dir = .
-
-makefile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
-stub_dir := $(dir $(makefile_path))
-
-CLEAR_VARS = $(stub_dir)clear_vars.mk
-BUILD_HOST_STATIC_LIBRARY = $(stub_dir)build_host_static_library.mk
-BUILD_HOST_SHARED_LIBRARY = $(stub_dir)build_host_shared_library.mk
-BUILD_HOST_EXECUTABLE = $(stub_dir)build_host_executable.mk
-
-# TODO: Change.
-#BUILD_STATIC_LIBRARY = $(stub_dir)build_host_static_library.mk
-
-.PHONY: all
 all:
 
-include Android.mk
+install: all
+	install -m 755 -d $(prefix)/share/android-make-stub
+	install -m 644 src/build_host_executable.mk $(prefix)/share/android-make-stub/build_host_executable.mk
+	install -m 644 src/build_host_shared_library.mk $(prefix)/share/android-make-stub/build_host_shared_library.mk
+	install -m 644 src/build_host_static_library.mk $(prefix)/share/android-make-stub/build_host_static_library.mk
+	install -m 644 src/clear_vars.mk $(prefix)/share/android-make-stub/clear_vars.mk
