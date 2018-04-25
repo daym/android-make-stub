@@ -4,6 +4,8 @@ LOCAL_CXX_OBJ_FILES := $(notdir $(filter %.o,$(patsubst %.cpp,%.o,$(patsubst %.c
 LOCAL_OBJ_FILES := $(notdir $(patsubst %.cpp,%.o,$(patsubst %.c,%.o,$(patsubst %.cc,%.o,$(LOCAL_SRC_FILES)))))
 LOCAL_C_INCLUDES_PARAMS := -I ../base/include -I ../include -I ../libsparse/include $(foreach d, $(LOCAL_C_INCLUDES), -I $d)
 
+built_static_libraries := $(built_static_libraries) $(LOCAL_MODULE).a
+
 .PHONY: all
 all: $(LOCAL_MODULE).a
 
