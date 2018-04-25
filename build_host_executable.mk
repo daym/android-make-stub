@@ -21,7 +21,7 @@ $(LOCAL_MODULE): $(LOCAL_SRC_FILES)
 .PHONY: install-$(LOCAL_MODULE)
 install: install-$(LOCAL_MODULE)
 install-$(LOCAL_MODULE): LOCAL_MODULE := $(LOCAL_MODULE)
-install-$(LOCAL_MODULE):
+install-$(LOCAL_MODULE): $(LOCAL_MODULE)
 	install -m 755 -d $(prefix)/bin
 	install -m 755 $(LOCAL_MODULE) $(prefix)/bin/$(LOCAL_MODULE)
 
