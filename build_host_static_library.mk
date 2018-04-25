@@ -5,6 +5,13 @@ LOCAL_C_INCLUDES_PARAMS := -I ../base/include -I ../include -I ../libsparse/incl
 $(LOCAL_MODULE).a: $(LOCAL_OBJ_FILES)
 	$(AR) rcs $@ $^
 
+.PHONY: install
+install: install-$(LOCAL_MODULE).a
+install-$(LOCAL_MODULE).a: LOCAL_MODULE := $(LOCAL_MODULE)
+install-$(LOCAL_MODULE).a: $(LOCAL_MODULE).a
+	install -m 755 -d $(prefix)/lib
+	install -m 755 $(LOCAL_MODULE).a $(prefix)/lib/$(LOCAL_MODULE).a
+
 %.o: %.c
 	$(CC) -c $(CFLAGS) $(LOCAL_CFLAGS) -I $(LOCAL_C_INCLUDES_PARAMS) $<
 
