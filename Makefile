@@ -12,7 +12,7 @@ BUILD_HOST_STATIC_LIBRARY = $(stub_dir)build_host_static_library.mk
 BUILD_HOST_EXECUTABLE = $(stub_dir)build_host_executable.mk
 
 # TODO: Change.
-BUILD_STATIC_LIBRARY = $(stub_dir)build_host_static_library.mk
+#BUILD_STATIC_LIBRARY = $(stub_dir)build_host_static_library.mk
 
 .PHONY: all
 all:
