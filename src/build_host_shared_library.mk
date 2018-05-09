@@ -16,9 +16,10 @@ $(SO):
 $(SO): LOCAL_LDLIBS_linux := $(LOCAL_LDLIBS_linux)
 $(SO): LOCAL_LDLIBS := $(LOCAL_LDLIBS)
 $(SO): LOCAL_WHOLE_STATIC_LIBRARIES_PARAMS := $(LOCAL_WHOLE_STATIC_LIBRARIES_PARAMS)
+$(SO): LOCAL_OBJ_FILES := $(LOCAL_OBJ_FILES)
 $(SO): LDLIBS := $(LDLIBS)
 $(SO): $(LOCAL_OBJ_FILES) $(built_static_libraries)
-	$(CC) -shared -o $@ -fPIC -Wl,-soname,$@ $^ $(LOCAL_WHOLE_STATIC_LIBRARIES_PARAMS) $(LOCAL_LDLIBS) $(LOCAL_LDLIBS_linux) $(LDLIBS)
+	$(CC) -shared -o $@ -fPIC -Wl,-soname,$@ $(LOCAL_OBJ_FILES) $(LOCAL_WHOLE_STATIC_LIBRARIES_PARAMS) -L . $(LOCAL_LDLIBS) $(LOCAL_LDLIBS_linux) $(LDLIBS)
 
 .PHONY: install
 install: install-$(SO)
