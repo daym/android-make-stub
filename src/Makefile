@@ -15,7 +15,7 @@ BUILD_HOST_NATIVE_TEST = $(stub_dir)/build_host_native_test.mk
 # TODO: Change.
 #BUILD_STATIC_LIBRARY = $(stub_dir)build_host_static_library.mk
 
-.PHONY: all
+.PHONY: all check
 all:
 
 include Android.mk

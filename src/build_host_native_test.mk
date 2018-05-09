@@ -1,4 +1,6 @@
 
+# 1:1 copy of parts of build_host_executable.mk
+
 LOCAL_C_OBJ_FILES := $(notdir $(filter %.o,$(patsubst %.c,%.o,$(LOCAL_SRC_FILES) $(LOCAL_SRC_FILES_linux))))
 LOCAL_CXX_OBJ_FILES := $(notdir $(filter %.o,$(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(LOCAL_SRC_FILES) $(LOCAL_SRC_FILES_linux)))))
 LOCAL_OBJ_FILES := $(notdir $(filter %.o,$(patsubst %.cpp,%.o,$(patsubst %.c,%.o,$(patsubst %.cc,%.o,$(LOCAL_SRC_FILES) $(LOCAL_SRC_FILES_linux))))))
@@ -34,18 +36,10 @@ $(LOCAL_MODULE): LOCAL_C_LIBS_PARAMS := $(foreach d,$(LOCAL_STATIC_LIBRARIES),-L
 $(LOCAL_MODULE): CPPFLAGS := $(CPPFLAGS)
 $(LOCAL_MODULE): CFLAGS := $(CFLAGS)
 $(LOCAL_MODULE): LDFLAGS := $(LDFLAGS)
-$(LOCAL_MODULE): LOCAL_CONLYFLAGS := $(LOCAL_CONLYFLAGS)
+$(LOCAL_MODULE): LOCAL_CONLYFLAGS := $(LOCAL_CONLYFLAGS) -lgtest_host
 
 $(LOCAL_MODULE): $(LOCAL_OBJ_FILES) $(built_static_libraries) $(built_shared_libraries)
 	$(CXX) -o $@ $(LOCAL_OBJ_FILES) $(LOCAL_LDFLAGS) $(LOCAL_LDLIBS) $(LOCAL_C_LIBS_PARAMS) $(LDFLAGS) $(LOCAL_STATIC_LIBRARIES_PARAMS)
 
-.PHONY: all
-all: $(LOCAL_MODULE)
-
-.PHONY: install
-.PHONY: install-$(LOCAL_MODULE)
-install: install-$(LOCAL_MODULE)
-install-$(LOCAL_MODULE): LOCAL_MODULE := $(LOCAL_MODULE)
-install-$(LOCAL_MODULE): $(LOCAL_MODULE)
-	install -m 755 -d $(prefix)/bin
-	install -m 755 $(LOCAL_MODULE) $(prefix)/bin/$(LOCAL_MODULE)
+.PHONY: check
+check: $(LOCAL_MODULE)
