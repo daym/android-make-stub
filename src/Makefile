@@ -17,5 +17,6 @@ BUILD_HOST_NATIVE_TEST = $(stub_dir)/build_host_native_test.mk
 
 .PHONY: all check
 all:
+check:
 
 include Android.mk
