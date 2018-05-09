@@ -3,6 +3,7 @@ LOCAL_C_OBJ_FILES := $(notdir $(filter %.o,$(patsubst %.c,%.o,$(LOCAL_SRC_FILES)
 LOCAL_CXX_OBJ_FILES := $(notdir $(filter %.o,$(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(LOCAL_SRC_FILES) $(LOCAL_SRC_FILES_linux)))))
 LOCAL_OBJ_FILES := $(notdir $(filter %.o,$(patsubst %.cpp,%.o,$(patsubst %.c,%.o,$(patsubst %.cc,%.o,$(LOCAL_SRC_FILES) $(LOCAL_SRC_FILES_linux))))))
 LOCAL_C_INCLUDES_PARAMS := -I ../base/include -I ../include -I ../libsparse/include $(foreach d, $(LOCAL_C_INCLUDES), -I $d)
+LOCAL_WHOLE_STATIC_LIBRARIES_PARAMS := -Wl,--whole-archive $(foreach d,$(LOCAL_WHOLE_STATIC_LIBRARIES),$d.a) -Wl,--no-whole-archive
 
 SO := $(LOCAL_MODULE).so.0
 
@@ -14,9 +15,10 @@ all: $(SO)
 $(SO):
 $(SO): LOCAL_LDLIBS_linux := $(LOCAL_LDLIBS_linux)
 $(SO): LOCAL_LDLIBS := $(LOCAL_LDLIBS)
+$(SO): LOCAL_WHOLE_STATIC_LIBRARIES_PARAMS := $(LOCAL_WHOLE_STATIC_LIBRARIES_PARAMS)
 $(SO): LDLIBS := $(LDLIBS)
-$(SO): $(LOCAL_OBJ_FILES)
-	$(CC) -shared -o $@ -fPIC -Wl,-soname,$@ $^ $(LOCAL_LDLIBS) $(LOCAL_LDLIBS_linux) $(LDLIBS)
+$(SO): $(LOCAL_OBJ_FILES) $(built_static_libraries)
+	$(CC) -shared -o $@ -fPIC -Wl,-soname,$@ $^ $(LOCAL_WHOLE_STATIC_LIBRARIES_PARAMS) $(LOCAL_LDLIBS) $(LOCAL_LDLIBS_linux) $(LDLIBS)
 
 .PHONY: install
 install: install-$(SO)
