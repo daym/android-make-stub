@@ -6,7 +6,7 @@ LOCAL_C_INCLUDES_PARAMS := -I ../base/include -I ../include -I ../libsparse/incl
 
 SO := $(LOCAL_MODULE).so.0
 
-built_static_libraries := $(built_static_libraries) $(SO)
+built_shared_libraries := $(built_shared_libraries) $(SO)
 
 .PHONY: all
 all: $(SO)
