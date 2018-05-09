@@ -15,8 +15,10 @@ BUILD_HOST_NATIVE_TEST = $(stub_dir)/build_host_native_test.mk
 # TODO: Change.
 #BUILD_STATIC_LIBRARY = $(stub_dir)build_host_static_library.mk
 
-.PHONY: all check
+.PHONY: all check install
 all:
 check:
+install:
+	if [ -d "include" ] ; then find include -type d -exec install -m 755 -d $(prefix)/'{}' ';' && find include -type f -name "*.h" -exec install -m 755 '{}' $(prefix)/'{}' ';' ; fi
 
 include Android.mk
