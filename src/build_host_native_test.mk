@@ -43,3 +43,4 @@ $(LOCAL_MODULE): $(LOCAL_OBJ_FILES) $(built_static_libraries) $(built_shared_lib
 
 .PHONY: check
 check: $(LOCAL_MODULE)
+	$(LOCAL_MODULE)
