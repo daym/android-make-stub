@@ -11,7 +11,7 @@ CLEAR_VARS = $(stub_dir)clear_vars.mk
 BUILD_HOST_STATIC_LIBRARY = $(stub_dir)build_host_static_library.mk
 BUILD_HOST_SHARED_LIBRARY = $(stub_dir)build_host_shared_library.mk
 BUILD_HOST_EXECUTABLE = $(stub_dir)build_host_executable.mk
-
+BUILD_HOST_NATIVE_TEST = $(stub_dir)/build_host_native_test.mk
 # TODO: Change.
 #BUILD_STATIC_LIBRARY = $(stub_dir)build_host_static_library.mk
 
