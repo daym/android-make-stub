@@ -11,8 +11,12 @@ built_shared_libraries := $(built_shared_libraries) $(SO)
 .PHONY: all
 all: $(SO)
 
+$(SO):
+$(SO): LOCAL_LDLIBS_linux := $(LOCAL_LDLIBS_linux)
+$(SO): LOCAL_LDLIBS := $(LOCAL_LDLIBS)
+$(SO): LDLIBS := $(LDLIBS)
 $(SO): $(LOCAL_OBJ_FILES)
-	$(CC) -shared -o $@ -fPIC -Wl,-soname,$@ $^
+	$(CC) -shared -o $@ -fPIC -Wl,-soname,$@ $^ $(LOCAL_LDLIBS) $(LOCAL_LDLIBS_linux) $(LDLIBS)
 
 .PHONY: install
 install: install-$(SO)
