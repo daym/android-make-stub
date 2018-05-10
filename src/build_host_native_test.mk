@@ -37,7 +37,7 @@ $(LOCAL_MODULE): LOCAL_C_INCLUDES_PARAMS := -I ../base/include -I ../include -I 
 $(LOCAL_MODULE): LOCAL_C_LIBS_PARAMS := $(foreach d,$(LOCAL_STATIC_LIBRARIES) $(LOCAL_SHARED_LIBRARIES),-L ../$(patsubst %-host,%,$(patsubst %_host,%,$d)))
 $(LOCAL_MODULE): CPPFLAGS := $(CPPFLAGS)
 $(LOCAL_MODULE): CFLAGS := $(CFLAGS)
-$(LOCAL_MODULE): LDFLAGS := $(LDFLAGS) -lgtest_main
+$(LOCAL_MODULE): LDFLAGS := $(LDFLAGS) -lgtest -lgtest_main
 $(LOCAL_MODULE): LOCAL_CONLYFLAGS := $(LOCAL_CONLYFLAGS)
 
 $(LOCAL_MODULE): $(LOCAL_OBJ_FILES) $(built_static_libraries) $(built_shared_libraries)
