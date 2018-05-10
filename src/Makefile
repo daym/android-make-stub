@@ -2,7 +2,9 @@
 prefix = /usr
 HOST_OS = linux
 
-my-dir = .
+define my-dir
+  $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+endef
 
 makefile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 stub_dir := $(dir $(makefile_path))
