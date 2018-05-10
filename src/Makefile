@@ -7,15 +7,15 @@ define my-dir
 endef
 
 makefile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
-stub_dir := $(dir $(makefile_path))
+BUILD_SYSTEM := $(dir $(makefile_path))
 
-CLEAR_VARS = $(stub_dir)clear_vars.mk
-BUILD_HOST_STATIC_LIBRARY = $(stub_dir)build_host_static_library.mk
-BUILD_HOST_SHARED_LIBRARY = $(stub_dir)build_host_shared_library.mk
-BUILD_HOST_EXECUTABLE = $(stub_dir)build_host_executable.mk
-BUILD_HOST_NATIVE_TEST = $(stub_dir)/build_host_native_test.mk
+CLEAR_VARS = $(BUILD_SYSTEM)clear_vars.mk
+BUILD_HOST_STATIC_LIBRARY = $(BUILD_SYSTEM)build_host_static_library.mk
+BUILD_HOST_SHARED_LIBRARY = $(BUILD_SYSTEM)build_host_shared_library.mk
+BUILD_HOST_EXECUTABLE = $(BUILD_SYSTEM)build_host_executable.mk
+BUILD_HOST_NATIVE_TEST = $(BUILD_SYSTEM)/build_host_native_test.mk
 # TODO: Change.
-#BUILD_STATIC_LIBRARY = $(stub_dir)build_host_static_library.mk
+#BUILD_STATIC_LIBRARY = $(BUILD_SYSTEM)build_host_static_library.mk
 
 .PHONY: all check install
 all:
