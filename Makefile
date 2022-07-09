@@ -22,3 +22,4 @@ install: all
 	install -m 644 src/core/main.mk $(prefix)/share/android/build/core/main.mk
 check:
 	make -C tests/single-host-executable-module
+	make -C tests/multiple-host-executable-modules

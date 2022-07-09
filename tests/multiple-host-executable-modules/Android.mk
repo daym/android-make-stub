@@ -8,9 +8,17 @@
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := single-file
+LOCAL_MODULE := hello
 LOCAL_MODULE_TAGS := optional
 LOCAL_SRC_FILES := ../common/hello.c
+
+include $(BUILD_HOST_EXECUTABLE)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := goodbye
+LOCAL_MODULE_TAGS := optional
+LOCAL_SRC_FILES := goodbye.c
 
 include $(BUILD_HOST_EXECUTABLE)
 
