@@ -1,5 +1,13 @@
+# Copyright (C) 2018 Danny Milosavljevic <dannym@scratchpost.org>
+# Copyright (C) 2022 Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
+#
+# This file is licensed under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance with the
+# License.  You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
 
-.PHONY: all install
+.PHONY: all check install
 
 all:
 
@@ -12,3 +20,5 @@ install: all
 	install -m 644 src/core/clear_vars.mk $(prefix)/share/android/build/core/clear_vars.mk
 	install -m 644 src/core/base_rules.mk $(prefix)/share/android/build/core/base_rules.mk
 	install -m 644 src/core/main.mk $(prefix)/share/android/build/core/main.mk
+check:
+	make -C tests/single-host-executable-module
