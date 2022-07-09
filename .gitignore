@@ -52,6 +52,9 @@ Mkfile.old
 dkms.conf
 
 # Tests
+/tests/multiple-host-executable-modules/goodbye
+/tests/multiple-host-executable-modules/hello
+/tests/multiple-host-executable-modules/single-file
 /tests/single-host-executable-module/single-file
 
 # Text editor temporary files

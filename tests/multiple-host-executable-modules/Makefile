@@ -5,12 +5,9 @@
 # License.  You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+.PHONY: all
 
-include $(CLEAR_VARS)
-
-LOCAL_MODULE := single-file
-LOCAL_MODULE_TAGS := optional
-LOCAL_SRC_FILES := ../common/hello.c
-
-include $(BUILD_HOST_EXECUTABLE)
-
+all:
+	make -f ../../src/core/main.mk
+	test "`./hello`" = "Hello World"
+	test "`./goodbye`" = "Goodbye World"
