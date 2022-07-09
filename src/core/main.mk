@@ -21,6 +21,11 @@ BUILD_HOST_NATIVE_TEST = $(BUILD_SYSTEM)/build_host_native_test.mk
 all:
 check:
 install:
-	if [ -d "include" ] ; then find include -type d -exec install -m 755 -d $(prefix)/'{}' ';' && find include -type f -name "*.h" -exec install -m 755 '{}' $(prefix)/'{}' ';' ; fi
+	if [ -d "include" ] ; then \
+		find include -type d \
+			-exec install -m 755 -d $(prefix)/'{}' ';' && \
+		find include -type f -name "*.h" \
+			-exec install -m 755 '{}' $(prefix)/'{}' ';' ; \
+	fi
 
 include Android.mk
