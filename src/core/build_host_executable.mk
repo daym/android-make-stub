@@ -1,3 +1,15 @@
+# Copyright (C) 2018 Danny Milosavljevic <dannym@scratchpost.org>
+# Copyright (C) 2022 Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
+#
+# This file is licensed under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance with the
+# License.  You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+
+include $(BUILD_SYSTEM)target_local_module.mk
+
+ifeq ($(LOCAL_MODULE),$(TARGET))
 
 LOCAL_C_OBJ_FILES := $(notdir $(filter %.o,$(patsubst %.c,%.o,$(LOCAL_SRC_FILES) $(LOCAL_SRC_FILES_linux))))
 LOCAL_CXX_OBJ_FILES := $(notdir $(filter %.o,$(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(LOCAL_SRC_FILES) $(LOCAL_SRC_FILES_linux)))))
@@ -51,3 +63,5 @@ install-$(LOCAL_MODULE): LOCAL_MODULE := $(LOCAL_MODULE)
 install-$(LOCAL_MODULE): $(LOCAL_MODULE)
 	install -m 755 -d $(prefix)/bin
 	install -m 755 $(LOCAL_MODULE) $(prefix)/bin/$(LOCAL_MODULE)
+
+endif # ifneq ($(LOCAL_MODULE),$(TARGET))

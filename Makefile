@@ -23,3 +23,4 @@ install: all
 check:
 	make -C tests/single-host-executable-module
 	make -C tests/multiple-host-executable-modules
+	make -C tests/target-host-executable-module

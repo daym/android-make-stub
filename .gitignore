@@ -56,6 +56,7 @@ dkms.conf
 /tests/multiple-host-executable-modules/hello
 /tests/multiple-host-executable-modules/single-file
 /tests/single-host-executable-module/single-file
+/tests/target-host-executable-module/hello
 
 # Text editor temporary files
 *~
