@@ -1,3 +1,19 @@
+# Copyright (C) 2018 Danny Milosavljevic <dannym@scratchpost.org>
+# Copyright (C) 2022 Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
+#
+# This file is licensed under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance with the
+# License.  You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# We enable users to pass LOCAL_MODULE=<local module> to make, to only
+# build the specified local module. However we can't keep the value in
+# LOCAL_MODULE as it is then (re)defined in Android.mk
+
+TARGET := $(LOCAL_MODULE)
+undefine LOCAL_MODULE
+override undefine LOCAL_MODULE
 
 prefix = /usr
 HOST_OS = linux
