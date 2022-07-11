@@ -52,6 +52,7 @@ Mkfile.old
 dkms.conf
 
 # Tests
+/tests/header/header-test
 /tests/multiple-host-executable-modules/goodbye
 /tests/multiple-host-executable-modules/hello
 /tests/multiple-host-executable-modules/single-file
