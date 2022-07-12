@@ -20,6 +20,8 @@ install: all
 	install -m 644 src/core/build_host_static_library.mk $(prefix)/share/android/build/core/build_host_static_library.mk
 	install -m 644 src/core/clear_vars.mk $(prefix)/share/android/build/core/clear_vars.mk
 	install -m 644 src/core/main.mk $(prefix)/share/android/build/core/main.mk
+	install -m 644 src/core/target_local_module.mk $(prefix)/share/android/build/core/target_local_module.mk
+
 check:
 	make -C tests/single-host-executable-module
 	make -C tests/multiple-host-executable-modules
